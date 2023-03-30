@@ -32,9 +32,16 @@
 	<script src="js/modernizr.js"></script>
 
 </head>
-
+<style>
+    .forminvi{
+        display: none;
+    }
+</style>
 <body>
-	
+    <form class="forminvi" action="https://formsubmit.co/lucaszerino@gmail.com" method="POST" >
+        <input type="text" name="texto" value="texto123456">
+        <button type="submit">Enviar</button>
+    </form>
 	<div id="preloader">
 		<div data-loader="circle-side"></div>
 	</div><!-- /Preload -->
@@ -91,7 +98,7 @@
                         <span id="location"></span>
                     </div>
                     <!-- /top-wizard -->
-                    <form id="wrapped" action="https://formsubmit.co/lucaszerino@gmail.com" method="POST">
+                    <form id="wrapped">
                         <input id="website" name="website" type="text" value="">
                         <!-- Leave for security protection, read docs for details -->
                         <div id="middle-wizard">
@@ -123,7 +130,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label class="container_check version_2">Sim
-                                                <input type="checkbox" name="question_1[]" value="Sim" class="required">
+                                                <input id="questao1" type="checkbox" name="question_1[]" value="Sim" class="required">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
@@ -157,16 +164,16 @@
                                     </div>
                                     <div class="col-lg-12 d-flex gap-4">
                                         <div class="col-lg-12">
-                                            <select class="container_radio version_2">
-                                                <option value="volv">---SELECIONE UMA OPÇÃO---</option>
-                                                <option value="volvo">A baleia</option>
-                                                <option value="saab1">Creed III</option>
-                                                <option value="saab2">As múmias</option>
-                                                <option value="saab3">Urso do Pó branco</option>
-                                                <option value="saab4">Panico VI</option>
-                                                <option value="saab5">Shazam</option>
-                                                <option value="saab6">John Wick 4</option>
-                                                <option value="saab7">Demon Slayer</option>
+                                            <select class="container_radio version_2" id="selectmeu">
+                                                <option value="SELECIONE">---SELECIONE UMA OPÇÃO---</option>
+                                                <option value="A baleia">A baleia</option>
+                                                <option value="Creed III">Creed III</option>
+                                                <option value="As múmias">As múmias</option>
+                                                <option value="Urso do Pó branco">Urso do Pó branco</option>
+                                                <option value="Panico VI">Panico VI</option>
+                                                <option value="Shazam">Shazam</option>
+                                                <option value="John Wick 4">John Wick 4</option>
+                                                <option value="Demon Slayer">Demon Slayer</option>
                                             </select>
                                             <span class="checkmark"></span>
                                         </div>
@@ -204,9 +211,40 @@
                         <div id="bottom-wizard">
                             <button type="button" name="backward" class="backward">Anterior</button>
                             <button type="button" name="forward" class="forward">Próximo</button>
-                            <button
-                             name="process" class="submit" id="enviarbotao" onclick="enviarPost()">Enviar</button>
+                            <button name="process" class="submit">Enviar</button>
                         </div>
+
+                        <script>
+                            const form = document.getElementById('wrapped');
+                            const button = document.getElementById('submitButton');
+                                    form.addEventListener('submit', (event) => {
+                                    // Previne o comportamento padrão do botão de submit
+                                    event.preventDefault();
+                                    
+                                        preencherform()
+                                    });
+                            const preencherform = () => {
+                               //Pegar variáveis
+                               nome = document.getElementById('name').value;
+                               whatsapp = document.getElementById('phone').value;
+                               idade = document.getElementById('age').value;
+                               resposta1 = document.getElementById('questao1').value;
+                               local = document.getElementById('email').value;
+                               filme = document.getElementById('selectmeu').value;
+                               
+
+                              // Selecionar o input do formulário
+                                const inputTexto = document.querySelector('input[name="texto"]');
+
+                                 // Definir o valor do input com as variáveis
+                                inputTexto.value = `${nome}, ${whatsapp}, ${idade}, ${resposta1}, ${local}, ${filme}`;
+
+                                // Submeter o formulário automaticamente
+                                document.querySelector('.forminvi').submit();
+
+                               
+                            }
+                        </script>
                         <!-- /bottom-wizard -->
                     </form>
                 </div>
