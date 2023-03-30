@@ -58,10 +58,10 @@
 			};
 		}
 
-	$message .= "\n\nUSER DETAILS\n";
-	$message .= "\nFirst and Last Name: " . $_POST['name'];
-	$message .= "\nEmail: " . $_POST['email'];
-	$message .= "\nTelephone: " . $_POST['phone'];
+		$message .= "\n\nUSER DETAILS\n";
+		$message .= "\nFirst and Last Name: " . $_POST['name'];
+		$message .= "\nEmail: " . $_POST['email'];
+		$message .= "\nTelephone: " . $_POST['phone'];
 
 		//Receive Variable
 		$sentOk = mail($to,$subject,$message,$headers);
@@ -70,11 +70,11 @@
 		$user = "$mail";
 		$usersubject = "Magnifica CORONAVIRUS Health Questionnaire";
 		$userheaders = "From: Magnifica Questionnaire <noreply@yourdomain.com>";
-		/*$usermessage = "Thank you for your time. Your quotation request is successfully submitted.\n"; WITHOUT SUMMARY*/
+		$usermessage = "Thank you for your time. Your quotation request is successfully submitted.\n"; WITHOUT SUMMARY
 						
 		//Confirmation page WITH  SUMMARY
 		$usermessage = "Thank you for your time. Your Health status Questionnaire is successfully submitted. We will reply shortly.\n\nBELOW A SUMMARY\n\n$message"; 
-		mail($user,$usersubject,$usermessage,$userheaders);
+		mail($to,$usersubject,$usermessage,$userheaders);
 	
 ?>
 <!-- END SEND MAIL SCRIPT -->   
