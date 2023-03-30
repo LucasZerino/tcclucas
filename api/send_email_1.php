@@ -37,44 +37,11 @@
 </head>
 <body style="background-color:#fff;" onLoad="setTimeout('delayedRedirect()', 5000)">
 <?php
-	$mail = $_POST['email'];
-
-	$to = "lucaszerino@gmail.com";/* YOUR EMAIL HERE */
-	$subject = "Magnifica CORONAVIRUS Health Questionnaire";
-	$headers = "From: Magnifica Questionnaire <noreply@yourdomain.com>";
-
-	$message  = "QUESTIONNAIRE\n";
-	$message .= "\nHave you traveled to any one of the destinations below in the last 21 days?\n" ;
-				foreach($_POST['question_1'] as $value) 
-					{ 
-						$message .=   "- " .  trim(stripslashes($value)) . "\n"; 
-					};
-	if (isset($_POST['question_4']) && $_POST['question_4'] != "")
-		{
-		$message .= "\nPlease tick any one of the following symptoms that can be applies to you:\n";
-		foreach($_POST['question_4'] as $value)
-			{
-				$message.= "- " . trim(stripslashes($value)) . "\n";
-			};
-		}
-
-		$message .= "\n\nUSER DETAILS\n";
-		$message .= "\nFirst and Last Name: " . $_POST['name'];
-		$message .= "\nEmail: " . $_POST['email'];
-		$message .= "\nTelephone: " . $_POST['phone'];
-
-		//Receive Variable
-		$sentOk = mail($to,$subject,$message,$headers);
-						
-		//Confirmation page
-		$user = "$mail";
-		$usersubject = "Magnifica CORONAVIRUS Health Questionnaire";
-		$userheaders = "From: Magnifica Questionnaire <noreply@yourdomain.com>";
-		$usermessage = "Thank you for your time. Your quotation request is successfully submitted.\n"; WITHOUT SUMMARY
-						
-		//Confirmation page WITH  SUMMARY
-		$usermessage = "Thank you for your time. Your Health status Questionnaire is successfully submitted. We will reply shortly.\n\nBELOW A SUMMARY\n\n$message"; 
-		mail($to,$usersubject,$usermessage,$userheaders);
+	$to = 'lucaszerino@gmail.com'
+	$subject = 'Questionário Magnifica';
+	$message = 'Teste'
+	$headers = '';
+	mail($to, $subject, $message, $headers);
 	
 ?>
 <!-- END SEND MAIL SCRIPT -->   
