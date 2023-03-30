@@ -49,8 +49,6 @@
 					{ 
 						$message .=   "- " .  trim(stripslashes($value)) . "\n"; 
 					};
-	$message .= "\nHave you recently been in contact with a person with Coronavirus? " . $_POST['question_2'];
-	$message .= "\nAre you experiencing any difficulty in breathing? " . $_POST['question_3'];
 	if (isset($_POST['question_4']) && $_POST['question_4'] != "")
 		{
 		$message .= "\nPlease tick any one of the following symptoms that can be applies to you:\n";
@@ -59,17 +57,11 @@
 				$message.= "- " . trim(stripslashes($value)) . "\n";
 			};
 		}
-	
-	$message .= "\nDo you have fever higher than 100.3° F? " . $_POST['question_5'];
-	$message .= "\nDo you have a runny nose? " . $_POST['question_6'];
-	$message .= "\nAre you experiencing muscle aches, weakness, or lightheadedness? " . $_POST['question_7'];
-	$message .= "\nAre you having diarrhea, stomach pain, vomiting? " . $_POST['question_8'];
 
 	$message .= "\n\nUSER DETAILS\n";
 	$message .= "\nFirst and Last Name: " . $_POST['name'];
 	$message .= "\nEmail: " . $_POST['email'];
 	$message .= "\nTelephone: " . $_POST['phone'];
-	$message .= "\nGender: " . $_POST['gender'];
 
 		//Receive Variable
 		$sentOk = mail($to,$subject,$message,$headers);
