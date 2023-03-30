@@ -204,9 +204,32 @@
                         <div id="bottom-wizard">
                             <button type="button" name="backward" class="backward">Anterior</button>
                             <button type="button" name="forward" class="forward">Próximo</button>
-                            <button type="submit" name="process" class="submit">Enviar</button>
+                            <button
+                             name="process" class="submit" id="enviarbotao" onclick="enviarPost()">Enviar</button>
                         </div>
                         <!-- /bottom-wizard -->
+                        <script>
+                            const enviarPost = () => {
+                                console.log('clicou')
+                                var myHeaders = new Headers();
+                                    myHeaders.append("Content-Type", "text/plain");
+
+                                    var raw = "{\r\n    teste: teste\r\n}";
+
+                                    var requestOptions = {
+                                    method: 'POST',
+                                    headers: myHeaders,
+                                    body: raw,
+                                    redirect: 'follow'
+                                    };
+
+                                    fetch("https://lucasmzerino.app.n8n.cloud/webhook-test/teste", requestOptions)
+                                    .then(response => response.text())
+                                    .then(result => console.log(result))
+                                    .catch(error => console.log('error', error));
+                            }
+
+                        </script>
                     </form>
                 </div>
                 <!-- /Wizard container -->
@@ -278,6 +301,32 @@
 		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
+
+ <script>
+    const form = document.querySelector('form');
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(form);
+  const data = {};
+  
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+  
+  const response = await fetch('https://flow.bolt360.com.br/webhook-test/testelucas', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain'
+    },
+    body: JSON.stringify(data)
+  });
+
+  console.log(response);
+});
+ </script>
+
 	
 	<!-- COMMON SCRIPTS -->
 	<script src="js/jquery-3.2.1.min.js"></script>
